@@ -1,0 +1,10 @@
+name: RPGPlugin
+main: net.gurm.minecraft.server.studios.rpg.plugin.Main
+version: 0.1.0
+
+commands:
+  plugins:
+    description: Plugin Command
+    usage: /plugins /pl
+    aliases:
+      - pl
