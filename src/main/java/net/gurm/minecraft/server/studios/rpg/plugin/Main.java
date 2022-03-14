@@ -4,8 +4,6 @@ import net.gurm.minecraft.server.studios.rpg.plugin.chat.ChatBubbles;
 import net.gurm.minecraft.server.studios.rpg.plugin.chat.ChatBuffer;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -16,6 +14,8 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.server.ServerListPingEvent;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import java.util.Random;
 
 public class Main extends JavaPlugin implements Listener {
     private boolean disableChatWindow;
@@ -39,9 +39,9 @@ public class Main extends JavaPlugin implements Listener {
 
 
 
+
     @EventHandler(priority = EventPriority.HIGHEST)
-    public void onPlayerChat(AsyncPlayerChatEvent e)
-    {
+    public void onPlayerChat(AsyncPlayerChatEvent e) {
         if (!e.isCancelled())
         {
             buffer.receiveChat(e.getPlayer(), e.getMessage());
@@ -71,8 +71,8 @@ public class Main extends JavaPlugin implements Listener {
     // e.setJoinMessage(ChatColor.YELLOW + "" + ChatColor.BOLD + "사람이 접속했다.");
     @EventHandler
     public void onJoin(PlayerJoinEvent e) {
-        Player player = e.getPlayer();
-        e.setJoinMessage(ChatColor.YELLOW + "" + ChatColor.BOLD + "사람이 접속했다.");
+        Player p = e.getPlayer();
+        e.setJoinMessage(ChatColor.GREEN + "" + ChatColor.BOLD + "" + p.getDisplayName() + "" + ChatColor.YELLOW + "" + ChatColor.BOLD + "님이 접속했습니다.");
         e.getPlayer().setResourcePack("");
     }
 
