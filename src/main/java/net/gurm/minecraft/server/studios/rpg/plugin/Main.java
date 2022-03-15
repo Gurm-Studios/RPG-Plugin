@@ -1,5 +1,7 @@
 package net.gurm.minecraft.server.studios.rpg.plugin;
 
+import com.comphenix.protocol.ProtocolLibrary;
+import com.comphenix.protocol.ProtocolManager;
 import net.gurm.minecraft.server.studios.rpg.plugin.chat.ChatBubbles;
 import net.gurm.minecraft.server.studios.rpg.plugin.chat.ChatBuffer;
 import org.bukkit.Bukkit;
@@ -15,12 +17,14 @@ import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.server.ServerListPingEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.util.Random;
 
 public class Main extends JavaPlugin implements Listener {
     private boolean disableChatWindow;
     private ChatBuffer buffer;
     public ChatBubbles bubbles;
+
+
+    private ProtocolManager protocolManager;
 
     @Override
     public void onEnable() {
@@ -35,7 +39,10 @@ public class Main extends JavaPlugin implements Listener {
 
     }
 
-
+    @Override
+    public void onLoad() {
+        protocolManager = ProtocolLibrary.getProtocolManager();
+    }
 
 
 
