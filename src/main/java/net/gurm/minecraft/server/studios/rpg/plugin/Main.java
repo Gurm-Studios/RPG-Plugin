@@ -2,6 +2,7 @@ package net.gurm.minecraft.server.studios.rpg.plugin;
 
 import com.comphenix.protocol.ProtocolLibrary;
 import com.comphenix.protocol.ProtocolManager;
+import kotlin.jvm.internal.Intrinsics;
 import net.gurm.minecraft.server.studios.rpg.plugin.chat.ChatBubbles;
 import net.gurm.minecraft.server.studios.rpg.plugin.chat.ChatBuffer;
 import org.bukkit.Bukkit;
@@ -38,14 +39,11 @@ public class Main extends JavaPlugin implements Listener {
         Bukkit.getPluginManager().registerEvents(this, this);
 
     }
-
+    
     @Override
     public void onLoad() {
         protocolManager = ProtocolLibrary.getProtocolManager();
     }
-
-
-
 
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onPlayerChat(AsyncPlayerChatEvent e) {
@@ -71,17 +69,18 @@ public class Main extends JavaPlugin implements Listener {
     @EventHandler
     public void onPlayerDeath(PlayerDeathEvent e) {
         Player player = e.getEntity().getPlayer();
-        e.setDeathMessage(null);
+        e.setDeathMessage(ChatColor.GREEN + "" + ChatColor.BOLD + player.getDisplayName() + "" + ChatColor.RED + "" + ChatColor.BOLD + "님이 사망하셨습니다.");
     }
 
-
     // e.setJoinMessage(ChatColor.YELLOW + "" + ChatColor.BOLD + "사람이 접속했다.");
+
     @EventHandler
     public void onJoin(PlayerJoinEvent e) {
         Player p = e.getPlayer();
         e.setJoinMessage(ChatColor.GREEN + "" + ChatColor.BOLD + "" + p.getDisplayName() + "" + ChatColor.YELLOW + "" + ChatColor.BOLD + "님이 접속했습니다.");
         e.getPlayer().setResourcePack("");
     }
+
 
     @EventHandler
     public void onJoin(PlayerQuitEvent e) {
