@@ -1,4 +1,4 @@
 name: RPGPlugin
 main: net.gurm.minecraft.server.studios.rpg.plugin.Main
-version: 0.6.7
-
+version: 0.1.0
+api-version: 1.12.2
